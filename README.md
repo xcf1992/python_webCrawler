@@ -1,1 +1,1 @@
-# python_webCrawler
+This web crawler is used to download pictures from meiyuanguan.
