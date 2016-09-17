@@ -1,4 +1,5 @@
 import scrapy
+import os
 from xiuRenOrg.items import MainPageItem
 from xiuRenOrg.items import SubPageItem
 
@@ -12,13 +13,15 @@ class main_page_spider(scrapy.Spider):
             url = response.urljoin(href.extract())
             yield scrapy.Request(url, callback=self.parse_sub_page)
 
+        return
+
     def parse_sub_page(self, response):
         item = SubPageItem()
-        item["title"] = response.xpath('//title/text()').extract()
+        item["title"] = response.xpath('//title/text()').extract_first()
         item["img_link"] = []
         for sel in response.xpath('//span'):
-            link = sel.xpath('a/@href').extract()
+            link = sel.xpath('a/@href').extract_first()
             if link:
                 item["img_link"].append(link)
 
-        yield item
+        return item
