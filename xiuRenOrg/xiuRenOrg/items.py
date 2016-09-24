@@ -11,6 +11,3 @@ import scrapy
 class SubPageItem(scrapy.Item):
     title = scrapy.Field()
     img_link = scrapy.Field()
-
-class MainPageItem(scrapy.Item):
-    subPage_link = scrapy.Field()

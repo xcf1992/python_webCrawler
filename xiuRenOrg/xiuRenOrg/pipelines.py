@@ -4,9 +4,11 @@ import urllib2
 class XiurenorgPipeline(object):
     def process_item(self, item, spider):
         name = item["title"].split("-")[0]
-        directory = "../image/" + name
+        directory = "./image/" + name
         if not os.path.exists(directory):
             os.makedirs(directory)
+        else:
+            return
 
         for link in item["img_link"]:
             image_name = link.split("/")[-1]
