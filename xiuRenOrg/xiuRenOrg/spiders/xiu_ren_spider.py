@@ -21,7 +21,7 @@ class xiu_ren_spider(scrapy.Spider):
                   "http://www.xiuren.org/page-5.html",
                   "http://www.xiuren.org/page-4.html",
                   "http://www.xiuren.org/page-3.html",
-                  s"http://www.xiuren.org/page-2.html",
+                  "http://www.xiuren.org/page-2.html",
                   "http://www.xiuren.org/"]
 
 
