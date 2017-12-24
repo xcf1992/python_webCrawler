@@ -1,19 +1,11 @@
 import scrapy
-import os
-from datetime import datetime
 from xiuRenOrg.items import SubPageItem
 
 class xiu_ren_spider(scrapy.Spider):
     name = "xiu_ren"
     allowed_domains = ["xiuren.org"]
 
-    start_urls = ["http://www.xiuren.org/page-16.html",
-                  "http://www.xiuren.org/page-15.html",
-                  "http://www.xiuren.org/page-14.html",
-                  "http://www.xiuren.org/page-13.html",
-                  "http://www.xiuren.org/page-12.html",
-                  "http://www.xiuren.org/page-11.html",
-                  "http://www.xiuren.org/page-10.html",
+    start_urls = ["http://www.xiuren.org/page-10.html",
                   "http://www.xiuren.org/page-9.html",
                   "http://www.xiuren.org/page-8.html",
                   "http://www.xiuren.org/page-7.html",

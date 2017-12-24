@@ -96,3 +96,6 @@ ENV/
 
 # log
 log/
+
+# pycharm
+.idea/
