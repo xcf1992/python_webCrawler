@@ -8,15 +8,9 @@ class TaotuSpider(scrapy.Spider):
     _BASE_URL = "https://www.aitaotu.com"
 
     start_urls = [
-        "https://www.aitaotu.com/tag/ttns/2.html",
-        "https://www.aitaotu.com/tag/ttns/3.html",
-        "https://www.aitaotu.com/tag/ttns/4.html",
-        "https://www.aitaotu.com/tag/ttns/5.html",
-        "https://www.aitaotu.com/tag/ttns/6.html",
-        "https://www.aitaotu.com/tag/ttns/7.html",
-        "https://www.aitaotu.com/tag/ttns/8.html",
-        "https://www.aitaotu.com/tag/ttns/9.html",
-        "https://www.aitaotu.com/tag/ttns/10.html"
+        "https://www.aitaotu.com/tag/huayan.html",
+        "https://www.aitaotu.com/tag/huayan/2.html",
+        "https://www.aitaotu.com/tag/huayan/3.html"
     ]
 
     def parse(self, response):
