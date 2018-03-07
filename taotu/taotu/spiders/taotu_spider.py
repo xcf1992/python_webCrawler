@@ -8,15 +8,14 @@ class TaotuSpider(scrapy.Spider):
     _BASE_URL = "https://www.aitaotu.com"
 
     start_urls = [
-        "https://www.aitaotu.com/tag/youmihui.html",
-        "https://www.aitaotu.com/tag/youmihui/2.html",
-        "https://www.aitaotu.com/tag/youmihui/3.html",
-        "https://www.aitaotu.com/tag/youmihui/4.html"
+        "https://www.aitaotu.com/tag/xiurenwang.html"
     ]
 
     def parse(self, response):
         data = response.css("body > div > div > div > div")[4]
+        print data
         subs = data.css("ul > li > a::attr('href')").extract()
+        print subs
         for sub_url in subs:
             url = "%s%s" % (self._BASE_URL, sub_url)
             yield scrapy.Request(url, callback=self.parse_sub_page)
