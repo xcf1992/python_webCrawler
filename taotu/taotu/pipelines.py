@@ -11,7 +11,7 @@ import os
 
 
 class TaotuPipeline(object):
-    _BASE_REPO = "./xiurenwang/"
+    _BASE_REPO = "./xixiwang/"
     _RETRY_LIMIT = 3
 
     def process_item(self, item, spider):
