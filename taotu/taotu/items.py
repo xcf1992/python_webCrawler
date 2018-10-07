@@ -11,3 +11,4 @@ import scrapy
 class TaotuItem(scrapy.Item):
     title = scrapy.Field()
     image = scrapy.Field()
+    referer = scrapy.Field()

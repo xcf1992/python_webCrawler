@@ -8,6 +8,11 @@
 import urllib2
 import traceback
 import os
+import sys
+
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 class TaotuPipeline(object):
@@ -16,29 +21,32 @@ class TaotuPipeline(object):
 
     def process_item(self, item, spider):
         title = item["title"].split("-")[0].strip()
+        referer = item["referer"]
 
-        for link in item["image"]:
-            image_name = "%s_%s" % (title, link.split("/")[-1])
-            self.save_image(self._BASE_REPO + image_name.strip(), link)
+        for img_url in item["image"]:
+            image_name = "%s_%s" % (title, img_url.split("/")[-1])
+            self.save_image(self._BASE_REPO + image_name.strip(), referer, img_url)
 
         return item
 
-    def save_image(self, name, link):
+    def download_image(self, img_name, referer, img_url):
+        command = "wget -d --header='Referer: %s' %s --output-document='%s'" % (referer, img_url, img_name)
+        os.system(command)
+
+    def save_image(self, name, referer, img_url):
         if os.path.exists(name):
             print "Already exist, return directly"
             return
 
         for i in range(self._RETRY_LIMIT):
             try:
-                with open(name, "w") as image:
-                    image.write(urllib2.urlopen(link).read())
-                    break
+                self.download_image(name, referer[0], img_url)
             except Exception, e:
                 if i < self._RETRY_LIMIT:
                     print '!Get exception: %s' % e
                     continue
                 else:
-                    print '!!!Failed to download image: %s' % link
+                    print '!!!Failed to download image: %s' % img_url
                     traceback.print_exc()
 
         return
