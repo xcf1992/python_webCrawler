@@ -6,6 +6,9 @@ class xiu_ren_spider(scrapy.Spider):
     allowed_domains = ["xiuren.org"]
 
     start_urls = [
+                "http://www.xiuren.org/page-11.html",
+                "http://www.xiuren.org/page-10.html",
+                "http://www.xiuren.org/page-9.html",
                 "http://www.xiuren.org/page-8.html",
                 "http://www.xiuren.org/page-7.html",
                 "http://www.xiuren.org/page-6.html",

@@ -16,7 +16,7 @@ sys.setdefaultencoding('utf-8')
 
 
 class TaotuPipeline(object):
-    _BASE_REPO = "./xixiwang/"
+    _BASE_REPO = "./youguowang/"
     _RETRY_LIMIT = 3
 
     def process_item(self, item, spider):
