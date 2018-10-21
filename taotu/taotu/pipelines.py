@@ -41,6 +41,7 @@ class TaotuPipeline(object):
         for i in range(self._RETRY_LIMIT):
             try:
                 self.download_image(name, referer[0], img_url)
+                break
             except Exception, e:
                 if i < self._RETRY_LIMIT:
                     print '!Get exception: %s' % e
