@@ -33,7 +33,7 @@ class XiurenorgPipeline(object):
 
     def save_image(self, name, link):
         if os.path.exists(name):
-            print "Already exist, return directly"
+            print("Already exist, return directly")
             return
 
         for i in range(self._RETRY_LIMIT):
