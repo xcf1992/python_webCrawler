@@ -16,4 +16,4 @@ def download_image_1(image_url, image_name):
         image.write(urllib2.urlopen(image_url).read())
 
 if __name__ == "__main__":
-    download_image_1("https://ii.hywly.com/a/1/31611/6.jpg", "./test.jpg")
+    download_image_1("https://ii.hywly.com/a/1/26793/1.jpg", "./image/Manuela+ [HuaYan] Vol.047 6.jpg.jpg")

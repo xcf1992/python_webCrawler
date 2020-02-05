@@ -6,7 +6,7 @@ class MeituriSpider(scrapy.Spider):
     name = "meituri"
     allowed_domian = "meituri.com"
 
-    start_urls = ["https://www.meituri.com/t/5500/"]
+    start_urls = ["https://www.meituri.com/t/654/"]
 
     def parse(self, response):
         for href in response.css("body > div > ul > li > a::attr('href')")[0:-5]:
