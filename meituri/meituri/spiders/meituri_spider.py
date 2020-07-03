@@ -7,8 +7,7 @@ class MeituriSpider(scrapy.Spider):
     allowed_domian = "meituri.com"
 
     start_urls = [
-                    "https://www.lanvshen.com/t/2712/",
-                    "https://www.lanvshen.com/t/2712/index_1.html"
+                    "https://www.lanvshen.com/t/3156"
                  ]
 
     def parse(self, response):
