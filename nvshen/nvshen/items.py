@@ -4,11 +4,9 @@
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html
-
 import scrapy
 
 
 class NvshenItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    urls = scrapy.Field()
+    names = scrapy.Field()

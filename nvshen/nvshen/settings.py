@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'nvshen.spiders'
 #USER_AGENT = 'nvshen (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -64,9 +64,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'nvshen.pipelines.NvshenPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'nvshen.pipelines.NvshenPipeline': 0,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -77,7 +77,7 @@ ROBOTSTXT_OBEY = True
 #AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
-#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+AUTOTHROTTLE_TARGET_CONCURRENCY = 2.0
 # Enable showing throttling stats for every response received:
 #AUTOTHROTTLE_DEBUG = False
 
