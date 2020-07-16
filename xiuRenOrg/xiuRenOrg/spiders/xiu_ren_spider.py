@@ -16,7 +16,25 @@ class xiu_ren_spider(scrapy.Spider):
         "http://www.xiuren.org/page-8.html",
         "http://www.xiuren.org/page-9.html",
         "http://www.xiuren.org/page-10.html",
-        "http://www.xiuren.org/page-11.html"
+        "http://www.xiuren.org/page-11.html",
+        "http://www.xiuren.org/page-12.html",
+        "http://www.xiuren.org/page-13.html",
+        "http://www.xiuren.org/page-14.html",
+        "http://www.xiuren.org/page-15.html",
+        "http://www.xiuren.org/page-16.html",
+        "http://www.xiuren.org/page-17.html",
+        "http://www.xiuren.org/page-18.html",
+        "http://www.xiuren.org/page-19.html",
+        "http://www.xiuren.org/page-20.html",
+        "http://www.xiuren.org/page-21.html",
+        "http://www.xiuren.org/page-22.html",
+        "http://www.xiuren.org/page-23.html",
+        "http://www.xiuren.org/page-24.html",
+        "http://www.xiuren.org/page-25.html",
+        "http://www.xiuren.org/page-26.html",
+        "http://www.xiuren.org/page-27.html",
+        "http://www.xiuren.org/page-28.html",
+        "http://www.xiuren.org/page-29.html"
     ]
 
 

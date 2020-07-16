@@ -5,14 +5,12 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
-import urllib2
+import urllib.request
 import traceback
 import os
 import sys
-
-
+from importlib import reload
 reload(sys)
-sys.setdefaultencoding('utf-8')
 
 
 class XiurenorgPipeline(object):
@@ -28,8 +26,10 @@ class XiurenorgPipeline(object):
         return item
 
     def download_image(self, img_name, img_url):
-        with open(img_name, "w") as image:
-            image.write(urllib2.urlopen(img_url).read())
+        with open(img_name, "wb") as image:
+            req = urllib.request.Request(img_url)
+            con = urllib.request.urlopen(req)
+            image.write(con.read())
 
     def save_image(self, name, link):
         if os.path.exists(name):
@@ -40,12 +40,12 @@ class XiurenorgPipeline(object):
             try:
                 self.download_image(name, link)
                 break
-            except Exception, e:
+            except Exception as e:
                 if i < self._RETRY_LIMIT:
-                    print '!Get exception: %s' % e
+                    print('!Get exception: %s' % e)
                     continue
                 else:
-                    print '!!!Failed to download image: %s' % link
+                    print('!!!Failed to download image: %s' % link)
                     traceback.print_exc()
 
         return
