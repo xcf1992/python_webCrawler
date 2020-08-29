@@ -31,7 +31,7 @@ def download_image_2(image_url, image_name):
 def get_name_and_link():
     names = []
     links = []
-    with open("newlog", "r") as log:
+    with open("download.log", "r") as log:
         for data in log:
             line = data.strip()
             if line.startswith("[save_image_link]"):
@@ -47,6 +47,9 @@ def download_file():
         print(f"len names {len(names)} not equal to len links {len(links)}")
         return
     for i in range(0, len(names)):
+        if os.path.exists(names[i]):
+            print("Already exist, return directly")
+            continue
         download_image_2(links[i], names[i])
 
 

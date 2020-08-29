@@ -25,5 +25,7 @@ After setting up everything you can run the crawler use:
 scrapy crawl [xiu_re]|[taotu]
 Then all the images will be downloaded automatically for you.
 
+scrapy crawl xiuren | grep save_image > download.log
+
 Reference:
 https://docs.scrapy.org/en/latest/intro/tutorial.html
