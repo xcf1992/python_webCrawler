@@ -16,7 +16,6 @@ class xiu_ren_spider(scrapy.Spider):
                 continue
             #print(f"{url}")
             yield scrapy.Request(url, callback=self.parse_sub_page)
-        return
 
     def parse_sub_page(self, response):
         item = XiurenItem()
