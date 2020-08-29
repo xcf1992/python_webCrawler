@@ -1,6 +1,7 @@
 import scrapy
 from xiuren.items import XiurenItem
 
+
 class xiu_ren_spider(scrapy.Spider):
     name = "xiuren"
     allowed_domains = ["xiuren.org"]

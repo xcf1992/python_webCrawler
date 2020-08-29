@@ -32,7 +32,9 @@ class XiurenPipeline(object):
         return item
 
     def save_image(self, name, link):
-        print(f"[save_image] {datetime.now().strftime('%H:%M:%S')} {name}")
+        print(f"[save_image_name] {datetime.now().strftime('%H:%M:%S')} {name}")
+        print(f"[save_image_link] {datetime.now().strftime('%H:%M:%S')} {link}")
+        '''
         ref = "http://www.xiuren.org/" + link.split("/")[-2] + ".html"
         headers = {
             'user-agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
@@ -41,7 +43,7 @@ class XiurenPipeline(object):
         }
 
         try:
-            time.sleep(random.randint(2, 3))
+            time.sleep(random.randint(5, 6))
             # wget.download(link, out=name)
             with open(name, "wb") as image:
                 req = urllib.request.Request(link, headers=headers)
@@ -50,3 +52,4 @@ class XiurenPipeline(object):
         except Exception as e:
             print(f"failed link:{link}")
             print(f'Get exception: {e}')
+        '''
