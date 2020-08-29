@@ -8,6 +8,7 @@ import urllib.request
 import traceback
 import os
 import sys
+import wget
 from importlib import reload
 reload(sys)
 
@@ -36,10 +37,11 @@ class XiurenPipeline(object):
         }
 
         try:
-            with open(name, "wb") as image:
-                req = urllib.request.Request(link, headers=headers)
-                con = urllib.request.urlopen(req)
-                image.write(con.read())
+            wget.download(link, out=name)
+            #with open(name, "wb") as image:
+                #req = urllib.request.Request(link, headers=headers)
+                #con = urllib.request.urlopen(req)
+                #image.write(con.read())
         except Exception as e:
             print(f"failed link:{link}")
             print(f'Get exception: {e}')

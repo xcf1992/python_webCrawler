@@ -1,6 +1,7 @@
 import urllib.request
 import traceback
 import os
+import wget
 import sys
 from importlib import reload
 reload(sys)
@@ -20,8 +21,9 @@ def download_image_1(image_url, image_name):
         con = urllib.request.urlopen( req )
         image.write(con.read())
 
+def download_image_2(image_url, image_name):
+    wget.download(image_url, out=image_name)
+
 if __name__ == "__main__":
-    test = "adfd/adsfadf/asdf".replace("/", "")
-    print(f"{test}")
-    download_image_1("https://img.xsnvshen.com/album/24410/32697/001.jpg", "./test.jpg")
-    #download_image_1("https://ii.hywly.com/a/1/26793/1.jpg", "./image/Manuela+ [HuaYan] Vol.047 6.jpg.jpg")
+    #download_image_1("https://img.xsnvshen.com/album/24410/32697/001.jpg", "./test.jpg")
+    download_image_2("http://www.xiuren.org/xiuren2/XiuRen-N02016/0108.jpg", "./test.jpg")
