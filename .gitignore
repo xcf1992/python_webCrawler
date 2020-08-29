@@ -99,3 +99,4 @@ log/
 
 # pycharm
 .idea/
+*.tmp
