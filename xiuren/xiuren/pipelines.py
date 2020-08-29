@@ -9,6 +9,7 @@ import traceback
 import os
 import sys
 import wget
+import time
 from importlib import reload
 reload(sys)
 
@@ -37,6 +38,7 @@ class XiurenPipeline(object):
         }
 
         try:
+            time.sleep(1)
             wget.download(link, out=name)
             #with open(name, "wb") as image:
                 #req = urllib.request.Request(link, headers=headers)
