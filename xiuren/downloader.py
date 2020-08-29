@@ -8,6 +8,17 @@ from importlib import reload
 reload(sys)
 
 
+def timeout_handler(signum, frame):   # Custom signal handler
+    raise TimeoutException
+
+
+class TimeoutException(Exception):   # Custom exception class
+    pass
+
+
+signal.signal(signal.SIGALRM, timeout_handler)
+
+
 def download_image_1(image_url, image_name):
     with open(image_name, "wb") as image:
         # print(f"{urllib.request.urlopen(image_url).read()}")
@@ -16,17 +27,18 @@ def download_image_1(image_url, image_name):
             'referer': 'https://www.xsnvshen.com/album/32697'
         }
         req = urllib.request.Request(image_url, headers=headers)
-        con = urllib.request.urlopen( req )
+        con = urllib.request.urlopen(req)
         image.write(con.read())
 
 
 def download_image_2(image_url, image_name):
-    signal.alarm(5)
+    signal.alarm(10)
     try:
         wget.download(image_url, out=image_name)
     except TimeoutException:
-        print(f"get hang when download [link]: {image_url}")
-        print(f"get hang when download [name]: {image_name}")
+        print(f"\n[save_image_link]: {image_url}")
+        print(f"[save_image_name]: {image_name}")
+        print(f"[save_image_name]: {image_name}")
     else:
         signal.alarm(0)
 
@@ -51,18 +63,10 @@ def download_file():
         return
     for i in range(0, len(names)):
         if os.path.exists(names[i]):
-            print("Already exist, return directly")
+            # print("Already exist, return directly")
             continue
         time.sleep(1)
         download_image_2(links[i], names[i])
-
-
-def timeout_handler(signum, frame):   # Custom signal handler
-    raise TimeoutException
-
-
-class TimeoutException(Exception):   # Custom exception class
-    pass
 
 
 if __name__ == "__main__":
