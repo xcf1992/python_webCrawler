@@ -22,14 +22,14 @@ class XiurenPipeline(object):
         for link in item["urls"]:
             image_name = name + "_" + link.split("/")[-1]
             # print(f"image name is {image_name}")
-            if os.path.exists(name):
+            if os.path.exists(image_name):
                 print("Already exist, return directly")
                 continue
             self.save_image(self._BASE_REPO + image_name, link)
         return item
 
     def download(self, img_name, img_url):
-        print(f"[download] {img_url}")
+        # print(f"[download] {img_url}")
         headers = {
             'user-agent' : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
             'referer': 'https://www.xsnvshen.com/album/32697'
