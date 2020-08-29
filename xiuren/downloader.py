@@ -1,15 +1,11 @@
 import urllib.request
-import traceback
+import time
 import os
 import wget
 import sys
+import signal
 from importlib import reload
 reload(sys)
-
-
-def get_webpage(url, file_name):
-    with open("file_name", "w") as image:
-        image.write(urllib2.urlopen(url).read())
 
 
 def download_image_1(image_url, image_name):
@@ -25,7 +21,14 @@ def download_image_1(image_url, image_name):
 
 
 def download_image_2(image_url, image_name):
-    wget.download(image_url, out=image_name)
+    signal.alarm(5)
+    try:
+        wget.download(image_url, out=image_name)
+    except TimeoutException:
+        print(f"get hang when download [link]: {image_url}")
+        print(f"get hang when download [name]: {image_name}")
+    else:
+        signal.alarm(0)
 
 
 def get_name_and_link():
@@ -50,7 +53,16 @@ def download_file():
         if os.path.exists(names[i]):
             print("Already exist, return directly")
             continue
+        time.sleep(1)
         download_image_2(links[i], names[i])
+
+
+def timeout_handler(signum, frame):   # Custom signal handler
+    raise TimeoutException
+
+
+class TimeoutException(Exception):   # Custom exception class
+    pass
 
 
 if __name__ == "__main__":
