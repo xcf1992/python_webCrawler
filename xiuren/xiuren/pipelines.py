@@ -28,21 +28,18 @@ class XiurenPipeline(object):
             self.save_image(image_name, link)
         return item
 
-    def download(self, img_name, img_url):
-        # print(f"[download] {img_url}")
-        headers = {
-            'user-agent' : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
-            'referer': 'https://www.xsnvshen.com/album/32697'
-        }
-        with open(img_name, "wb") as image:
-            req = urllib.request.Request(img_url, headers=headers)
-            con = urllib.request.urlopen(req)
-            image.write(con.read())
-
     def save_image(self, name, link):
         print(f"[save_image] {name}")
+        headers = {
+            'user-agent' : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
+            'referer': 'http://www.xiuren.org/'
+        }
+
         try:
-            self.download(name, link)
+            with open(name, "wb") as image:
+                req = urllib.request.Request(link, headers=headers)
+                con = urllib.request.urlopen(req)
+                image.write(con.read())
         except Exception as e:
             print(f"failed link:{link}")
             print(f'Get exception: {e}')
