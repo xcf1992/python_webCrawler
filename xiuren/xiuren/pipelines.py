@@ -20,12 +20,12 @@ class XiurenPipeline(object):
         print(f"[process_item] dowloading {name}")
 
         for link in item["urls"]:
-            image_name = name + "_" + link.split("/")[-1]
+            image_name = self._BASE_REPO + name + "_" + link.split("/")[-1]
             # print(f"image name is {image_name}")
             if os.path.exists(image_name):
                 print("Already exist, return directly")
                 continue
-            self.save_image(self._BASE_REPO + image_name, link)
+            self.save_image(image_name, link)
         return item
 
     def download(self, img_name, img_url):
