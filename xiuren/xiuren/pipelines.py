@@ -5,11 +5,12 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import urllib.request
-import traceback
 import os
 import sys
 import wget
+import random
 import time
+from datetime import datetime
 from importlib import reload
 reload(sys)
 
@@ -19,7 +20,7 @@ class XiurenPipeline(object):
 
     def process_item(self, item, spider):
         name = item["name"]
-        print(f"[process_item] dowloading {name}")
+        print(f"[process_item] downloading {name}")
 
         for link in item["urls"]:
             image_name = self._BASE_REPO + name + "_" + link.split("/")[-1]
@@ -31,19 +32,21 @@ class XiurenPipeline(object):
         return item
 
     def save_image(self, name, link):
-        # print(f"[save_image] {name}")
+        print(f"[save_image] {datetime.now().strftime('%H:%M:%S')} {name}")
+        ref = "http://www.xiuren.org/" + link.split("/")[-2] + ".html"
         headers = {
-            'user-agent' : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
-            'referer': 'http://www.xiuren.org/'
+            'user-agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36",
+            'referer': ref,
+            "connection": "keep-alive"
         }
 
         try:
-            time.sleep(1)
-            wget.download(link, out=name)
-            #with open(name, "wb") as image:
-                #req = urllib.request.Request(link, headers=headers)
-                #con = urllib.request.urlopen(req)
-                #image.write(con.read())
+            time.sleep(random.randint(2, 3))
+            # wget.download(link, out=name)
+            with open(name, "wb") as image:
+                req = urllib.request.Request(link, headers=headers)
+                con = urllib.request.urlopen(req)
+                image.write(con.read())
         except Exception as e:
             print(f"failed link:{link}")
             print(f'Get exception: {e}')
