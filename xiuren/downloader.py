@@ -38,7 +38,6 @@ def download_image_2(image_url, image_name):
     except TimeoutException:
         print(f"\n[save_image_link]: {image_url}")
         print(f"[save_image_name]: {image_name}")
-        print(f"[save_image_name]: {image_name}")
     else:
         signal.alarm(0)
 
