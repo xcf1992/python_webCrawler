@@ -5,15 +5,15 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import urllib.request
-import traceback
 import os
 import sys
+from datetime import datetime
 from importlib import reload
 reload(sys)
 
 
 class NvshenPipeline(object):
-    _BASE_REPO = "/Users/chenfu.xie/Work/python_webCrawler/nvshen/image/"
+    _BASE_REPO = "~/Work/python_webCrawler/nvshen/image/"
 
     def generate_url(self, url):
         remove_thumb = url.replace("/thumb_600x900", "")
@@ -28,12 +28,16 @@ class NvshenPipeline(object):
                 continue
 
             image_url = self.generate_url(origin_url)
-            self.download_image(image_name, image_url)
+            self.download_image_log(image_name, image_url)
         return item
+
+    def download_image_log(self, img_name, img_url):
+        print(f"[save_image_name] {datetime.now().strftime('%H:%M:%S')} {img_name}")
+        print(f"[save_image_link] {datetime.now().strftime('%H:%M:%S')} {img_url}")
 
     def download_image(self, img_name, img_url):
         headers = {
-            'user-agent' : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
+            'user-agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36",
             'referer': 'https://www.xsnvshen.com/album/32697'
         }
         with open(img_name, "wb") as image:

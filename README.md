@@ -8,9 +8,9 @@ Use Scrapy as the framework.
 
 # Usage:
 Change start_urls from in taotu_spider.py or xiu_ren_spider.py under spiders repo,
-the list of url is the page you want to start to download images;
-
+the list of url is the page you want to start to download images;  
 Make sure you have created /image repo under first level /taotu and /xiuRenOrg
+
 ## XiuRen
 For xiuren, the url should be like "http://www.xiuren.org/page-4.html", which is the index page
 for different image collections.
@@ -23,9 +23,18 @@ python downloader.py
 ```
 This step will download the actual image from the links in the download.log
 
+## nvshen
+Base web is www.xsnvshen.com
+```
+scrapy crawl nvshen | grep save_image > download.log
+```
+
 ## AiTaoTu
 For aitaotu, the url should be like https://www.aitaotu.com/tag/ttns.html, which is the index page
 of different image collections or brands.
+
+## meituri
+This web has been deprecated.
 
 # Reference:
 https://docs.scrapy.org/en/latest/intro/tutorial.html
