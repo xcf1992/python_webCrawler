@@ -7,6 +7,5 @@ import scrapy
 
 
 class TujiguItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    urls = scrapy.Field()
+    names = scrapy.Field()

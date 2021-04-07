@@ -1,6 +1,7 @@
 import scrapy
 from nvshen.items import NvshenItem
 
+
 class MeituriSpider(scrapy.Spider):
     name = "nvshen"
     allowed_domian = "xsnvshen.com"

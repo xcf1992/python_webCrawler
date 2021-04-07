@@ -13,7 +13,7 @@ reload(sys)
 
 
 class NvshenPipeline(object):
-    _BASE_REPO = "~/Work/python_webCrawler/nvshen/image/"
+    _BASE_REPO = "/Users/chenfu.xie/Work/python_webCrawler/nvshen/image/"
 
     def generate_url(self, url):
         remove_thumb = url.replace("/thumb_600x900", "")

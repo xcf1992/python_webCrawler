@@ -24,10 +24,15 @@ python downloader.py
 This step will download the actual image from the links in the download.log
 
 ## nvshen
-Base web is www.xsnvshen.com
+Base web is www.xsnvshen.com, this web limit access rate
+TODO: adjust access rate
 ```
 scrapy crawl nvshen | grep save_image > download.log
 ```
+
+## tujigu
+Base web is tujigu.com. The collections here is not complete.  
+```scrapy crawl tujigu | grep save_image > download.log```
 
 ## AiTaoTu
 For aitaotu, the url should be like https://www.aitaotu.com/tag/ttns.html, which is the index page
